@@ -1,6 +1,6 @@
 services:
   mysql:
-    build: 
+    build:
       context: .
       dockerfile: ./configSql/DockerFile
     image: mysql
@@ -18,9 +18,9 @@ services:
       - my-red
 
   node:
-    build: 
+    build:
       context: .
-      dockerfile: DockerFile2
+      dockerfile: Dockerfile
     container_name: node-app
     ports:
       - "3000:3000"
