@@ -1,8 +1,36 @@
 {
+  "name": "docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mysql2": "^3.9.7",
     "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.8",
+    "@types/validator": "^13.7.17",
+    "debug": "^4.3.4",
+    "dottie": "^2.0.6",
+    "inflection": "^1.13.4",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "pg-connection-string": "^2.6.1",
+    "retry-as-promised": "^7.0.4",
+    "semver": "^7.5.4",
+    "sequelize-pool": "^7.1.0",
+    "toposort-class": "^1.0.1",
+    "uuid": "^8.3.2",
+    "validator": "^13.9.0",
+    "wkx": "^0.5.0"
   }
 }
