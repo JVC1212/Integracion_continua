@@ -108,7 +108,7 @@ res.status(500).json({ error: 'Error al eliminar estudiante' });
 app.get('/', async (req, res) => {
 sequelize.sync({ force: true })
 .then(() => {
-res.status(200).json({ status: 'ok' });
+res.status(200).json({ status: 'Prueba desde github' });
 })
 .catch((error) => {
 res.status(500).json({ status: 'error', detail: error.message });
