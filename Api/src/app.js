@@ -1,6 +1,9 @@
+require("./instrument.js");
+const Sentry = require("@sentry/node");
 const express = require('express');
 const { Sequelize } = require('sequelize');
 const cors = require('cors');
+
 
 const app = express();
 const sequelize = new Sequelize('students', 'studentAdmin', '125&1333-', {
@@ -8,9 +11,13 @@ const sequelize = new Sequelize('students', 'studentAdmin', '125&1333-', {
     dialect: 'mysql'
     });
 
+
+
 // Middleware
 app.use(cors({ origin: ["http://localhost:31459"], credentials: true }));
 app.use(express.json());
+
+Sentry.setupExpressErrorHandler(app);
 
 // Modelo
 const Student = sequelize.define('Students', {
@@ -110,6 +117,17 @@ app.get('/', async (req, res) => {
         } catch (error) {
           res.status(500).json({ error: 'Internal Server Error' });
         }
+      });
+
+      app.get("/debug-sentry", (req, res) => {
+        throw new Error("Este es un error de prueba para Sentry.");
+      });
+
+      app.use(function onError(err, req, res, next) {
+        // The error id is attached to `res.sentry` to be returned
+        // and optionally displayed to the user for support.
+        res.statusCode = 500;
+        res.end(res.sentry + "\n");
       });
       
 
