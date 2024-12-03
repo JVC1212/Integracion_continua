@@ -1,4 +1,4 @@
-// Import with `import * as Sentry from "@sentry/node"` if you are using ESM
+// Importar con `import * as Sentry from "@sentry/node"` si estás usando ESM
 const Sentry = require("@sentry/node");
 const { nodeProfilingIntegration } = require("@sentry/profiling-node");
 
@@ -7,20 +7,20 @@ Sentry.init({
   integrations: [
     nodeProfilingIntegration(),
   ],
-  // Tracing
-  tracesSampleRate: 1.0, //  Capture 100% of the transactions
+  // Rastreo
+  tracesSampleRate: 1.0, // Capturar el 100% de las transacciones
 });
-// Manually call startProfiler and stopProfiler
-// to profile the code in between
+// Llama manualmente a startProfiler y stopProfiler
+// para perfilar el código entre estas llamadas
 Sentry.profiler.startProfiler();
 
-// Starts a transaction that will also be profiled
+// Inicia una transacción que también será perfilada
 Sentry.startSpan({
-  name: "My First Transaction",
+  name: "Mi Primera Transacción",
 }, () => {
-  // the code executing inside the transaction will be wrapped in a span and profiled
+  // el código ejecutado dentro de la transacción estará envuelto en un span y será perfilado
 });
 
-// Calls to stopProfiling are optional - if you don't stop the profiler, it will keep profiling
-// your application until the process exits or stopProfiling is called.
+// Las llamadas a stopProfiling son opcionales; si no detienes el profiler, seguirá perfilando
+// tu aplicación hasta que el proceso termine o se llame a stopProfiling.
 Sentry.profiler.stopProfiler();
