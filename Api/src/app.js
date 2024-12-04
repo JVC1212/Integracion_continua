@@ -104,7 +104,7 @@ app.delete('/students/:id', async (req, res) => {
 app.get('/', async (req, res) => {
     sequelize.sync({ force: true })
     .then(() => {
-    res.status(200).json({ status: 'Prueba desde github video' });
+    res.status(200).json({ status: 'Prueba desde github video prueba' });
     })
     .catch((error) => {
     res.status(500).json({ status: 'error', detail: error.message });
